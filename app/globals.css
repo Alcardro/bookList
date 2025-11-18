@@ -1,21 +1,135 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
 
+h2 {
+  color: #f8fafc;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #3b82f6;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #200f0f;
-    --foreground: #ecc5c5;
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #94a3b8;
+  padding: 40px;
+  background: #1e293b;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.error {
+  background-color: #dc2626;
+  color: #fef2f2;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 500;
+  border: 1px solid #ef4444;
+}
+
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.books-table thead {
+  background-color: #1e40af;
+}
+
+.books-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ec7717;
+  border-bottom: 1px solid #334155;
+}
+
+.books-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #334155;
+}
+
+.books-table tbody tr:hover {
+  background-color: #2d3748;
+  transition: background-color 0.2s ease;
+}
+
+.books-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.book-id {
+  font-weight: 600;
+  color: #60a5fa;
+  background-color: #1e3a8a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.book-title {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.book-author {
+  color: #cbd5e1;
+  font-style: normal;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .books-table {
+    font-size: 14px;
+  }
+  
+  .books-table th,
+  .books-table td {
+    padding: 12px 10px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  .books-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .book-id {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
 }
