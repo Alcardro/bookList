@@ -60,7 +60,6 @@ export default function BooksList() {
       <table className="books-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Título</th>
             <th>Autor</th>
           </tr>
@@ -68,7 +67,6 @@ export default function BooksList() {
         <tbody>
           {books.map((book) => (
             <tr key={book.id}>
-              <td className="book-id">{book.id}</td>
               <td className="book-title">{book.title}</td>
               <td className="book-author">
                 {book.authors.length > 0 ? book.authors[0].name : "Autor desconocido"}
