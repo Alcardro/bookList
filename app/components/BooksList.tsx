@@ -16,8 +16,15 @@ export default function BooksList() {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     async function fetchBooks() {
       try {
         const response = await fetch("https://gutendex.com/books/?page=1");
@@ -33,28 +40,37 @@ export default function BooksList() {
     }
 
     fetchBooks();
-  }, []);
+  }, [isClient]);
 
-  if (loading) return <div>Cargando libros...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (!isClient) {
+    return (
+      <div className="container">
+        <h2>Lista de Libros</h2>
+        <div className="loading">Cargando...</div>
+      </div>
+    );
+  }
+
+  if (loading) return <div className="loading">Cargando libros...</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="container">
       <h2>Lista de Libros</h2>
-      <table border={1} style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table className="books-table">
         <thead>
-          <tr style={{ backgroundColor: '#0c4475ff' }}>
-            <th style={{ padding: '8px', border: '1px solid #ccc' }}>ID</th>
-            <th style={{ padding: '8px', border: '1px solid #ccc' }}>Título</th>
-            <th style={{ padding: '8px', border: '1px solid #ccc' }}>Autor</th>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
           </tr>
         </thead>
         <tbody>
           {books.map((book) => (
             <tr key={book.id}>
-              <td style={{ padding: '8px', border: '1px solid #ccc' }}>{book.id}</td>
-              <td style={{ padding: '8px', border: '1px solid #ccc' }}>{book.title}</td>
-              <td style={{ padding: '8px', border: '1px solid #ccc' }}>
+              <td className="book-id">{book.id}</td>
+              <td className="book-title">{book.title}</td>
+              <td className="book-author">
                 {book.authors.length > 0 ? book.authors[0].name : "Autor desconocido"}
               </td>
             </tr>

@@ -2,8 +2,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #0f172a;
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #2d3748;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -15,67 +15,74 @@ body {
 }
 
 h2 {
-  color: #f8fafc;
+  color: #ffffff;
   margin-bottom: 25px;
   padding-bottom: 15px;
-  border-bottom: 2px solid #3b82f6;
+  border-bottom: 3px solid #fed7d7;
   text-align: center;
-  font-size: 2em;
-  font-weight: 300;
-  letter-spacing: 0.5px;
+  font-size: 2.2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 .loading {
   text-align: center;
-  font-size: 18px;
-  color: #94a3b8;
-  padding: 40px;
-  background: #1e293b;
-  border-radius: 8px;
-  border: 1px solid #334155;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .error {
-  background-color: #dc2626;
-  color: #fef2f2;
-  padding: 16px;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #fc8181, #fed7d7);
+  color: #742a2a;
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
   margin: 20px 0;
-  font-weight: 500;
-  border: 1px solid #ef4444;
+  font-weight: bold;
+  border: 2px solid #fed7d7;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .books-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #1e293b;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
   overflow: hidden;
-  border: 1px solid #334155;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .books-table thead {
-  background-color: #1e40af;
+  background: linear-gradient(135deg, #4fd1c5, #319795);
+  color: white;
 }
 
 .books-table th {
-  padding: 16px;
+  padding: 18px;
   text-align: left;
   font-weight: 600;
-  font-size: 15px;
-  color: #ec7717;
-  border-bottom: 1px solid #334155;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .books-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #334155;
+  padding: 15px 18px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .books-table tbody tr:hover {
-  background-color: #2d3748;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(135deg, #fed7d7, #feebc8);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .books-table tbody tr:last-child td {
@@ -83,22 +90,43 @@ h2 {
 }
 
 .book-id {
-  font-weight: 600;
-  color: #60a5fa;
-  background-color: #1e3a8a;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
+  font-weight: bold;
+  color: #2b6cb0;
+  background: #ebf8ff;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-align: center;
+  display: inline-block;
 }
 
 .book-title {
-  color: #f1f5f9;
-  font-weight: 500;
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .book-author {
-  color: #cbd5e1;
-  font-style: normal;
+  color: #718096;
+  font-style: italic;
+  background: #f7fafc;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Efectos de brillo en hover para las celdas */
+.books-table tbody tr:hover .book-id {
+  background: #bee3f8;
+  color: #1a365d;
+}
+
+.books-table tbody tr:hover .book-author {
+  background: #e6fffa;
+  color: #234e52;
+}
+
+.books-table tbody tr:hover .book-title {
+  color: #1a202c;
 }
 
 /* Responsive */
@@ -107,8 +135,13 @@ h2 {
     padding: 15px;
   }
   
+  h2 {
+    font-size: 1.8em;
+  }
+  
   .books-table {
     font-size: 14px;
+    border-radius: 10px;
   }
   
   .books-table th,
@@ -118,18 +151,72 @@ h2 {
 }
 
 @media (max-width: 480px) {
+  body {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+  }
+  
   h2 {
     font-size: 1.5em;
+    margin-bottom: 20px;
   }
   
   .books-table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   }
   
-  .book-id {
+  .book-id, .book-author {
     font-size: 13px;
-    padding: 4px 8px;
+    padding: 6px 10px;
+  }
+}
+
+/* Animación sutil para la tabla */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.books-table {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Efecto de brillo en el header */
+.books-table thead {
+  position: relative;
+  overflow: hidden;
+}
+
+.books-table thead::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
   }
 }
